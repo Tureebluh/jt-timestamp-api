@@ -19,7 +19,7 @@ app.get('/', function(req, res){
 app.get('/:paramString', function(req, res){
     var date = moment.unix(req.params.paramString);
     if(!date.isValid()){
-        date = moment(req.params.paramString, 'MMMM DD, YYYY', true);
+        date = moment(req.params.paramString, 'MMMM DD, YYYY');
         if(!date.isValid()){
             res.json({
                 'date-formatted' : null,
