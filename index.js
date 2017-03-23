@@ -4,17 +4,7 @@ var moment = require('moment');
 var app = express();
 var port = process.env.PORT || 3000;
 
-app.get('/', function(req, res){
-    var fileName = path.join(__dirname, 'public/index.html');
-    
-    res.sendFile(fileName, function(err){
-        if(err){
-            console.log(err.message);
-        } else {
-            console.log("Sent to: " + fileName)
-        }
-    });
-});
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/:paramString', function(req, res){
     var date = moment.unix(req.params.paramString);
